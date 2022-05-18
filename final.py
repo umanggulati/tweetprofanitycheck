@@ -63,3 +63,14 @@ for i in range(0, length):
         j = tweet_df.loc[i][2].count(word)
         b += j
     tweet_df.loc[tweet_df.index[i], 'profanity'] = b
+
+"""
+calculating degree of profanity
+"""
+for i in range(0, length):
+    tweet_df.loc[tweet_df.index[i], 'degreeofprofanity'] = (
+        tweet_df.loc[i][6]/tweet_df.loc[i][7])*100
+
+# sorting the dataframe according to degree of profanity column with most profain tweet on top
+
+print(tweet_df.sort_values(by='degreeofprofanity', ascending=False))
