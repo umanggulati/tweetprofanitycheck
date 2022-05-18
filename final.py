@@ -41,3 +41,8 @@ tweet_df['tweets'] = tweet_df['tweets'].str.replace(
 # removing all the punctuations
 tweet_df['tweets'] = tweet_df['tweets'].str.replace(r'[^\w\s]', '', regex=True)
 tweet_df['tweets'] = tweet_df['tweets'].apply(word_tokenize)  # tokenzing
+
+# adding required columns for calculations
+tweet_df["profanity"] = np.nan
+tweet_df["totalwords"] = np.nan
+tweet_df["degreeofprofanity"] = np.nan
