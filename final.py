@@ -46,3 +46,20 @@ tweet_df['tweets'] = tweet_df['tweets'].apply(word_tokenize)  # tokenzing
 tweet_df["profanity"] = np.nan
 tweet_df["totalwords"] = np.nan
 tweet_df["degreeofprofanity"] = np.nan
+
+a = ["racial", "slur", "white"]  # profain words assumed
+
+length = len(tweet_df)  # length of dataframe for further use
+
+"""
+for loop to find out total words in a tweet and also counting the number of profain words in a tweet
+"""
+
+for i in range(0, length):
+    b = 0
+    c = len(tweet_df.loc[i][2])
+    tweet_df.loc[tweet_df.index[i], 'totalwords'] = c
+    for word in a:
+        j = tweet_df.loc[i][2].count(word)
+        b += j
+    tweet_df.loc[tweet_df.index[i], 'profanity'] = b
